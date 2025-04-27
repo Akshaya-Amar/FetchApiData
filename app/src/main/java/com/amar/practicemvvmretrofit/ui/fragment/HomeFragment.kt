@@ -23,11 +23,6 @@ class HomeFragment : Fragment() {
           }
      }
 
-     private fun showBottomSheet(user: User) {
-          val bottomSheetFragment = BottomSheetFragment.newInstance(user)
-          bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
-     }
-
      override fun onCreateView(
           inflater: LayoutInflater, container: ViewGroup?,
           savedInstanceState: Bundle?
@@ -57,11 +52,7 @@ class HomeFragment : Fragment() {
                     is Result.Failure -> {
                          binding.progressBar.visibility = View.GONE
                          binding.recyclerView.visibility = View.VISIBLE
-                         Toast.makeText(
-                              context,
-                              result.error?.message ?: "Failure result",
-                              Toast.LENGTH_LONG
-                         ).show()
+                         Toast.makeText(context, result.error?.message ?: "Failure result", Toast.LENGTH_LONG).show()
                     }
                }
           }
@@ -72,5 +63,10 @@ class HomeFragment : Fragment() {
                layoutManager = LinearLayoutManager(requireContext())
                adapter = userAdapter
           }
+     }
+
+     private fun showBottomSheet(user: User) {
+          val bottomSheetFragment = BottomSheetFragment.newInstance(user)
+          bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
      }
 }

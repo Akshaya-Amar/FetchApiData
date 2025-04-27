@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">PracticeMVVMRetrofit</string>
-    <string name="unkown_value">Unknown</string>
+    <string name="unknown_value">Unknown</string>
 </resources>

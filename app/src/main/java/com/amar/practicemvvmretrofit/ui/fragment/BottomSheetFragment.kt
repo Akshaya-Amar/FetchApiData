@@ -32,7 +32,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
           val userData: User? = arguments?.getParcelable(USER_DATA)
 
           userData?.let { user ->
-               val unknown = getString(R.string.unkown_value)
+               val unknown = getString(R.string.unknown_value)
                val address = user.address
                val userInfo = buildString {
                     appendLine("ID: ${user.id ?: unknown}")
