@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.amar.practicemvvmretrofit.common.Result
+import com.amar.practicemvvmretrofit.data.model.User
 import com.amar.practicemvvmretrofit.databinding.FragmentHomeBinding
 import com.amar.practicemvvmretrofit.ui.adapter.UserAdapter
 import com.amar.practicemvvmretrofit.ui.viewmodel.UserViewModel
@@ -18,8 +19,13 @@ class HomeFragment : Fragment() {
      private val viewmodel: UserViewModel by viewModels()
      private val userAdapter by lazy {
           UserAdapter { user ->
-               Toast.makeText(context, "${user.id}", Toast.LENGTH_LONG).show()
+               showBottomSheet(user)
           }
+     }
+
+     private fun showBottomSheet(user: User) {
+          val bottomSheetFragment = BottomSheetFragment.newInstance(user)
+          bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
      }
 
      override fun onCreateView(
@@ -51,7 +57,11 @@ class HomeFragment : Fragment() {
                     is Result.Failure -> {
                          binding.progressBar.visibility = View.GONE
                          binding.recyclerView.visibility = View.VISIBLE
-                         Toast.makeText(context, result.error?.message ?: "Failure result", Toast.LENGTH_LONG).show()
+                         Toast.makeText(
+                              context,
+                              result.error?.message ?: "Failure result",
+                              Toast.LENGTH_LONG
+                         ).show()
                     }
                }
           }

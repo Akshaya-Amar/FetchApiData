@@ -10,9 +10,9 @@ import com.amar.practicemvvmretrofit.databinding.UserItemBinding
 
 class UserAdapter(
      private val onItemClick: (User) -> Unit
-) : ListAdapter<User, UserAdapter.UserViewHolder>(DiffCallBack()) {
+) : ListAdapter<User, UserAdapter.UserViewHolder>(UserDiffCallback()) {
 
-     class DiffCallBack : DiffUtil.ItemCallback<User>() {
+     class UserDiffCallback : DiffUtil.ItemCallback<User>() {
           override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
                return oldItem.id == newItem.id
           }
