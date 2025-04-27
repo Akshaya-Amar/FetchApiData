@@ -1,0 +1,8 @@
+{
+  "error":{
+    "code": 101,
+    "title": "Some error title",
+    "subtitle": "error subtitle",
+    "message": "message for error"
+  }
+}
