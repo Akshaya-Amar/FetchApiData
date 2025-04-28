@@ -1,0 +1,46 @@
+Here’s the step-by-step resolution flow:
+
+UserViewModel is requested.
+Hilt sees that UserViewModel requires a UserRepository.
+
+UserRepository is an interface, so Hilt looks for a binding.
+In RepositoryModule, Hilt finds:
+@Binds
+abstract fun bindUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
+➔ So Hilt now knows it needs UserRepositoryImpl.
+
+UserRepositoryImpl constructor requires:
+ApiService
+ResourceProvider
+
+So Hilt now needs to resolve these two dependencies before it can create UserRepositoryImpl.
+
+Resolving ApiService:
+
+To create ApiService, Hilt finds:
+@Provides
+fun provideApiService(retrofit: Retrofit): ApiService
+➔ This method requires a Retrofit instance first.
+
+To get Retrofit, Hilt finds:
+@Provides
+fun provideRetrofit(): Retrofit
+➔ No further dependencies needed inside provideRetrofit(). Hilt can directly create Retrofit.
+
+After creating Retrofit, Hilt calls provideApiService(retrofit) to create ApiService.
+
+Resolving ResourceProvider:
+ResourceProvider is a @Singleton class, with:
+@Inject constructor(@ApplicationContext private val context: Context)
+➔ Hilt already knows how to provide @ApplicationContext (because it’s built-in for Hilt apps).
+So it injects Context and creates ResourceProvider.
+
+Now that both are available:
+ApiService
+ResourceProvider
+
+Hilt can finally create UserRepositoryImpl.
+
+Finally:
+Hilt uses the @Binds method to bind UserRepositoryImpl as UserRepository.
+Then it provides the required UserRepository to UserViewModel.

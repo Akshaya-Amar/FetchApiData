@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">PracticeMVVMRetrofit</string>
     <string name="unknown_value">Unknown</string>
+    <string name="error_unknown">Unknown Error Occurred</string>
+    <string name="error_no_internet">No internet connection. Please check your network.</string>
+    <string name="error_timeout">Server timeout. Please try again later.</string>
+    <string name="error_io">Network error occurred</string>
     <string name="error_message">Unable to get data</string>
+    <string name="error_something_went_wrong">Something went wrong. Please try again.</string>
 </resources>
