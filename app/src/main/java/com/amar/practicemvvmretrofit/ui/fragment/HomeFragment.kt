@@ -13,7 +13,9 @@ import com.amar.practicemvvmretrofit.data.model.User
 import com.amar.practicemvvmretrofit.databinding.FragmentHomeBinding
 import com.amar.practicemvvmretrofit.ui.adapter.UserAdapter
 import com.amar.practicemvvmretrofit.ui.viewmodel.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
      private lateinit var binding: FragmentHomeBinding
      private val viewmodel: UserViewModel by viewModels()
