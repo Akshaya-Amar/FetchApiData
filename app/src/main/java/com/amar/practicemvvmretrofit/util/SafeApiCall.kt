@@ -65,7 +65,7 @@ private fun mapExceptionToErrorEntity(
           }
 
           is HttpException -> {
-               ErrorEntity(message = exception.message() ?: "http: "+resourceProvider.getString(R.string.error_something_went_wrong))
+               ErrorEntity(message = exception.message() ?: resourceProvider.getString(R.string.error_something_went_wrong))
           }
 
           else -> {
