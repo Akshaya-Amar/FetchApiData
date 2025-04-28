@@ -1,5 +1,6 @@
 package com.amar.practicemvvmretrofit.di
 
+import com.amar.practicemvvmretrofit.common.Constants.BASE_URL
 import com.amar.practicemvvmretrofit.data.api.ApiService
 import dagger.Module
 import dagger.Provides
@@ -13,8 +14,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-     private const val BASE_URL: String = "https://dummyjson.com"
-
      @Provides
      @Singleton
      fun provideRetrofit(): Retrofit {
@@ -26,7 +25,9 @@ object NetworkModule {
 
      @Provides
      @Singleton
-     fun provideApiService(retrofit: Retrofit): ApiService {
+     fun provideApiService(
+          retrofit: Retrofit
+     ): ApiService {
           return retrofit.create(ApiService::class.java)
      }
 }

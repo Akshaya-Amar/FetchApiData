@@ -19,6 +19,10 @@ class UserViewModel @Inject constructor(
      val users: LiveData<Result<UserData>> get() = _users
 
      init {
+          getUsers()
+     }
+
+     private fun getUsers() {
           viewModelScope.launch {
                val data = repo.getUsers()
                _users.postValue(data)
