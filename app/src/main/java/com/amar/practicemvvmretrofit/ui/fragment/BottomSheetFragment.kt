@@ -30,14 +30,23 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
 
           userData?.let { user ->
                val unknown = getString(R.string.unknown_value)
-               val address = user.address
+               val completeAddress = user.address?.let { address ->
+                    listOfNotNull(
+                         address.address,
+                         address.state,
+                         address.city,
+                         address.postalCode,
+                         address.country
+                    ).joinToString(", ").ifEmpty { unknown }
+               } ?: unknown
+
                val userInfo = buildString {
                     appendLine("ID: ${user.id ?: unknown}")
                     appendLine("Name: ${user.firstName ?: unknown} ${user.lastName}")
                     appendLine("Age: ${user.age ?: unknown}")
                     appendLine("Email: ${user.email ?: unknown}")
                     appendLine("Phone Number: ${user.phoneNumber ?: unknown}")
-                    appendLine("Address: ${address?.address}, ${address?.state}, ${address?.city}, ${address?.postalCode}")
+                    appendLine("Address: $completeAddress")
                }
 
                binding.userInfoTextView.text = userInfo
