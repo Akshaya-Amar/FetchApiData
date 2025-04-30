@@ -14,33 +14,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/profile_image_view"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/profile_picture"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/name_text_view"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/profile_image_view"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Akshaya Amar" />
 
             <TextView
                 android:id="@+id/email_text_view"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/name_text_view"
+                app:layout_constraintStart_toStartOf="@id/name_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/name_text_view"
                 tools:text="akshayaamar@gmail.com" />
 
             <TextView
                 android:id="@+id/phone_text_view"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/email_text_view"
+                app:layout_constraintStart_toStartOf="@id/email_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/email_text_view"
                 tools:text="5465453513" />
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

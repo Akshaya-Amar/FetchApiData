@@ -12,7 +12,7 @@ data class User(
      @SerializedName("age") val age: Int? = null,
      @SerializedName("email") val email: String? = null,
      @SerializedName("phone") val phoneNumber: String? = null,
-     @SerializedName("image") val image: String? = null,
+     @SerializedName("image") val profileImageUrl: String? = null,
      @SerializedName("height") val height: Double? = null,
      @SerializedName("hair") val hair: Hair? = null,
      @SerializedName("address") val address: Address? = null

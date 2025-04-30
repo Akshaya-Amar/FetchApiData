@@ -1,12 +1,15 @@
 package com.amar.practicemvvmretrofit.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.amar.practicemvvmretrofit.R
 import com.amar.practicemvvmretrofit.data.model.User
 import com.amar.practicemvvmretrofit.databinding.UserItemBinding
+import com.bumptech.glide.Glide
 
 class UserAdapter(
      private val onItemClick: (User) -> Unit
@@ -37,6 +40,7 @@ class UserAdapter(
      ) : RecyclerView.ViewHolder(binding.root) {
           fun onBind(user: User, onItemClick: (User) -> Unit) {
                with(binding) {
+                    setProfileImage(user.profileImageUrl, root.context)
                     val completeName = "${user.firstName} ${user.lastName}"
                     nameTextView.text = completeName
                     emailTextView.text = user.email
@@ -45,6 +49,15 @@ class UserAdapter(
                          onItemClick(user)
                     }
                }
+          }
+
+          private fun setProfileImage(profileImageUrl: String?, context: Context) {
+               val imageUrl = profileImageUrl?.takeIf { it.isNotBlank() }
+               Glide.with(context)
+                    .load(imageUrl)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .into(binding.profileImageView)
           }
      }
 }
