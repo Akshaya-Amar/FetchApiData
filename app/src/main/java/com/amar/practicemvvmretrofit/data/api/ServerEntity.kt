@@ -1,6 +1,5 @@
 package com.amar.practicemvvmretrofit.data.api
 
-import com.amar.practicemvvmretrofit.common.ErrorEntity
 import com.google.gson.annotations.SerializedName
 
 data class ServerEntity<T>(

@@ -1,4 +1,4 @@
-package com.amar.practicemvvmretrofit.common
+package com.amar.practicemvvmretrofit.data.api
 
 import com.google.gson.annotations.SerializedName
 
